@@ -1,0 +1,12 @@
+<!-- Inherits from base.html -->
+{% extends 'polls/base.html' %}
+    {% block index %}
+    <div>Hello</div>
+    <div>This is index of {{name}}</div> 
+    <div>My Bias</div>
+    <ul>
+        {%for bias in kpop %}
+            <li>{{bias}}</li>
+        {% endfor %}
+    </ul>
+    {% endblock %}
