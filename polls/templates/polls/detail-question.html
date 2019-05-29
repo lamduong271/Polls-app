@@ -1,0 +1,11 @@
+{% extends 'polls/base.html' %} 
+{% block index %} 
+    {% if detailQuestion %}
+
+
+    {% for choice in detailQuestion.choice_set.all %}
+        <div>{{choice.choice_text}}</div>
+    {% endfor %}
+    {% endif %} 
+{% endblock %}
+

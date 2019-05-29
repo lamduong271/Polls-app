@@ -1,0 +1,19 @@
+{% extends 'polls/base.html' %} {% block index %} {% if questions %}
+
+<ul class="collection with-header">
+  {% for question in questions %}
+  <li class="collection-item">
+    <div>
+      {{ question.question_text}}<a href="#!" class="secondary-content"
+        >Send<i class="material-icons"></i
+      ></a>
+    </div>
+  </li>
+
+  {% endfor %}
+</ul>
+{% else %}
+<div class="chip">
+  Something went wrong
+</div>
+{% endif %} {% endblock %}
