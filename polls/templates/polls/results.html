@@ -1,0 +1,12 @@
+{% extends 'polls/base.html' %} 
+{% block index %} 
+{% if question %}
+    <div class="card-panel teal lighten-2">{{question.question_text}}</div>
+    <ul class="collection with-header">
+        {% for answer in question.choice_set.all %}
+        <li class="collection-item"><div>{{answer.choice_text}}<div class="chip answer_chip">{{answer.vote}}</div></div></li>
+        {% endfor %}
+    </ul>
+{% endif %}
+<a href="{% url 'polls:detail-view' question.id %}" class="waves-effect waves-light btn">Back to vote</a>
+ {% endblock %}

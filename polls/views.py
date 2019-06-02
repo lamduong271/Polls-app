@@ -15,7 +15,18 @@ def viewList(request):
 
 def detailView(request, question_id):
     question = Question.objects.get(pk=question_id)
-    print(question)
     context = {"detailQuestion":question}
     return render(request,'polls/detail-question.html', context)
+
+def vote(request, question_id):
+    question = Question.objects.get(pk=question_id)
+    try:
+        answerValue = request.POST["choice"]
+        vote_num = question.choice_set.get(pk=answerValue)
+    except:
+        HttpResponse("no choice valid")
+    vote_num.vote = vote_num.vote + 1
+    vote_num.save()
+    return render(request, 'polls/results.html', {"question":question})
+
 

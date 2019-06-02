@@ -4,8 +4,8 @@
   {% for question in questions %}
   <li class="collection-item">
     <div>
-      {{ question.question_text}}<a href="#!" class="secondary-content"
-        >Send<i class="material-icons"></i
+      {{ question.question_text}}<a href="{% url 'polls:detail-view' question.id %}" class="secondary-content"
+        >Detail<i class="material-icons"></i
       ></a>
     </div>
   </li>

@@ -2,10 +2,23 @@
 {% block index %} 
     {% if detailQuestion %}
 
+    <div class="card-panel teal lighten-2">{{detailQuestion.question_text}}</div>
 
-    {% for choice in detailQuestion.choice_set.all %}
-        <div>{{choice.choice_text}}</div>
-    {% endfor %}
+    <form action="{% url 'polls:vote' detailQuestion.id %}" method="post">
+        {% csrf_token %}
+        <ul class="collection">
+            {% for choice in detailQuestion.choice_set.all %}
+            <li class="collection-item"><p>
+                <label>
+                <input value="{{ choice.id }}" class="with-gap" name="choice" type="radio" checked />
+                <span>{{choice.choice_text}}</span>
+                </label>
+            </p></li>
+            {% endfor %}
+        </ul>
+        <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+        </button>
+    </form>
     {% endif %} 
 {% endblock %}
 
